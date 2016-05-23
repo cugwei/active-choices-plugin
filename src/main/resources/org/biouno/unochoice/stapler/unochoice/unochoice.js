@@ -631,7 +631,8 @@ var UnoChoice = UnoChoice || (function($) {
             //var filterElement = e.target;
             var filterElement = _self.getFilterElement();
             var filteredElement = _self.getParameterElement();
-            var text = filterElement.value.toLowerCase();
+            var text = filterElement.value.toLowerCase().trim();
+            var original_text = filterElement.value.trim();
             var options = _self.originalArray;
             var newOptions = Array();
             for (var i = 0; i < options.length; i++) {
@@ -651,8 +652,16 @@ var UnoChoice = UnoChoice || (function($) {
                     }
                 }
             }
+
             var tagName = filteredElement.tagName;
             if (tagName == 'SELECT') { // handle SELECT's
+
+                // 如果过滤之后没有可选项，则将当前输入的关键字作为可选项
+                if (newOptions.length == 0) {
+                    newOptions.push({value: original_text,
+                                     innerHTML: "<option value='" + original_text + "'>" + original_text + "</option>"});
+                }
+
                jQuery(filteredElement).children().remove();
                for (var i = 0; i < newOptions.length ; ++i) {
                    var opt = document.createElement('option');
