@@ -178,7 +178,7 @@ QUnit.test("Test CascadeParameter class", function() {
 QUnit.test("Test FilteredElement with selects", function() {
 	var $fixture = jQuery("#qunit-fixture");
 	$fixture.append('<select name="value" multiple="multiple" size="8"><option value="1">Bruno</option><option value="2">Nuno</option><option value="3">Joe</option><option selected="true" value="4">Jeea</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>');
-	$fixture.append('<input class="uno_choice_filter" type="text" value="" name="test" placeholder="Filter">');
+	$fixture.append('<input class="uno_choice_filter" autocomplete="off" type="text" value="" name="test" placeholder="Filter">');
     var parameterHtmlElement = $fixture.find('*[name="value"]');
     if (parameterHtmlElement && parameterHtmlElement.get(0)) {
         var filterHtmlElement = $fixture.find('.uno_choice_filter');

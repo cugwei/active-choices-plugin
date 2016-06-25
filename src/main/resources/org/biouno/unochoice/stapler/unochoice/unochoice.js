@@ -655,7 +655,7 @@ var UnoChoice = UnoChoice || (function($) {
 
             var tagName = filteredElement.tagName;
             if (tagName == 'SELECT') { // handle SELECT's
-
+                // by wade
                 // 如果过滤之后没有可选项，则将当前输入的关键字作为可选项
                 if (newOptions.length == 0) {
                     newOptions.push({value: original_text,
