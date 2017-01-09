@@ -627,7 +627,8 @@ var UnoChoice = UnoChoice || (function($) {
      */
     FilterElement.prototype.initEventHandler = function() {
         var _self = this;
-        jQuery(_self.filterElement).keyup(function(e) {
+
+        var handler = function(e) {
             //var filterElement = e.target;
             var filterElement = _self.getFilterElement();
             var filteredElement = _self.getParameterElement();
@@ -766,7 +767,10 @@ var UnoChoice = UnoChoice || (function($) {
             console.log('Propagating change event after filtering');
             var e = jQuery.Event('change', {parameterName: 'Filter Element Event'});
             jQuery(filteredElement).trigger(e);
-        });
+        };
+
+        jQuery(_self.filterElement).keyup(handler);
+        jQuery(_self.filterElement).blur(handler);
     }
     // HTML utility methods
     /**
